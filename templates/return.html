@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Query completed</title>
+</head>
+<body>
+	<li role="button"><a href="{{ url_for('appp') }}"> Home</a></li>
+	<li role="button" class="nav-link"><a href="{{ url_for('Querie') }}">Queries </a></li>
+                    
+
+	{% if myvar=="insert" %}
+	<h1> Data enterred. The ID corresponding this entry is {{ID}} Return to home page</h1>
+
+
+
+
+	{% elif myvar=="Query 1" %}
+
+	<h1> Query 1 completed! Output: </h1>
+	<center><h3>For a particular disease, Do donors have it more or Acceptors?</h3>
+
+		<h3><font color="red"> Result: {{list}}</font></h3>
+
+		
+	</center>
+
+	{% elif myvar=="Query 3" %}
+
+	<h1> Query 3 completed! Output: </h1>
+	<center><h3>Blood Groups donated more in a blood drive more than a bank during the specified Starting and Ending dates</h3>
+
+		{% for x in list %}
+			<h3>{{x}} </h3>
+
+
+		{% endfor%}
+	</center>
+
+	{%elif myvar=="Query 2" %}
+	<h1>Query 2 Completed!</h1>
+	<center><h3>Donors that donated the most during a given time period.</h3>
+
+		{% if len==1 %}
+		<h3>{{list[0][0]}}</h3>
+		{% else %}
+		{% for x in list %}
+			
+			<h3>Full name: {{x[2]}}<font color="red"> Donor ID: </font>
+				{{x[1]}}  <font color="Blue" >Times Donated= </font>{{x[0]}}</h3>
+
+		{% endfor %}
+		{% endif %}
+	</center>
+
+
+
+	{% elif myvar=="Query 4" %}
+
+	<h1> Query 4 completed! Output: </h1>
+	<center><h3>Names of all the Donors according to Gender and Blood Groups specified</h3>
+
+
+		{% for x in list %}
+			<h3>{{x}} </h3>
+
+
+		{% endfor%}
+	</center>
+
+	{% elif myvar=="Query 5" %}
+
+	<h1> Query 5 completed! Output: </h1>
+	<center><h3>Which Blood group has the most number of donors registered and which one has the least?</h3>
+		
+
+	
+		  <h3><font color="red"> Blood Group with most Donors: </font> {{list[1][0]}} &nbsp;<font color="Blue "> Number </font>{{list[1][1]}} </h3>
+		  <h3><font color="red"> Blood Group with least Donors: </font> {{list[0][0]}} &nbsp;<font color="Blue "> Number </font>{{list[0][1]}} </h3>
+
+		
+	</center>
+
+
+	{%elif myvar=="Query 6" %}
+	<h1>Query 6 Completed!</h1>
+	<center><h3>Acceptors who received at least two blood samples from the same donor.</h3>
+
+		{% if len==1 %}
+		<h3>{{list[0][0]}}</h3>
+		{% else %}
+		{% for x in list %}
+			
+			<h3>Full name: {{x[1]}}<font color="red"> &nbsp; Acceptor ID: </font>{{x[0]}}</h3>
+
+		{% endfor %}
+		{% endif %}
+	</center>
+
+	{%elif myvar=="Query 7" %}
+	<h1>Query 7 Completed!</h1>
+	<center><h3>From amongst the acceptors who have at least one disease and received at most one sample of blood, here are all acceptors who have made the most number of requests</h3>
+
+		{% if len==1 %}
+		<h3>{{list[0][0]}}</h3>
+		{% else %}
+		{% for x in list %}
+			
+			<h3>Acceptor ID: {{x[1]}}<font color="red"> &nbsp; Number of Requests: </font>{{x[0]}}</h3>
+
+		{% endfor %}
+		{% endif %}
+	</center>
+
+
+	{% elif myvar=="Query 8" %}
+
+	<h1> Query 8 completed! Output: </h1>
+	<center><h3>Blood Group of acceptors and donors that have the most number of diseases</h3>
+		
+		  <h3><font color="red"> Blood Group: </font> {{list[0]}} &nbsp;<font color="Blue "> Number </font>{{list[1]}} </h3>
+	</center>
+
+	{% elif myvar=="Query 9" %}
+
+	<h1> Query 9 completed! Output: </h1>
+	<center><h3> Blood groups that have shown at least a 10% decrease in the number of donations received from blood drives</h3>
+
+		{% for x in list %}
+			<h3>{{x}} </h3>
+		{% endfor%}
+	</center>
+
+
+{% elif myvar=="Query 10" %}
+
+	<h1> Query 10 completed! Output: </h1>
+	<center><h3>  The difference between the average age of regular donors and those that donate through blood drives?</h3>
+
+		
+			<h3>Average Donor Age for people registered at a Blood Bank: &nbsp;<font color ="red">{{list[0]}}</font> </h3>
+			<h3>Average Age for people who donated at a Blood Drive: &nbsp; <font color="red">{{list[1]}}</font></h3>
+			<h3>Difference of the Two: &nbsp; <font color="red">{{list[2]}}</font>
+		
+	</center>
+
+
+	<!-- <h1> Data enterred: </h1> -->
+
+	<!-- {% for x in list %}
+	<p>{{x}} </p>
+
+
+	{% endfor%} -->
+
+	{% elif myvar=="delete"%}
+	<h1>Data Deleted Back to Home</h1>
+=
+	{% endif %}
+	
+
+</body>
+</html>

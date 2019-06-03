@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Drive Donor Sign Up</title>
+ 
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+  <style> 
+        .nav-link{
+            text-align: center;
+            display: inline;            
+        }
+        
+        .nav-link a:hover{
+            opacity:0.6;
+            text-decoration: none;
+        }
+
+    </style>
+
+  </head>
+ 
+  <body>
+
+ 
+    <div class="container">
+      <div class="header">
+        <center>
+        <nav>
+          <ul>
+                    <li role="button" class="nav-link"><a href="{{ url_for('appp') }}">Home</a>
+                    </li>
+                    <li role="button" class="nav-link"><a href=" {{ url_for('delete') }} ">Delete</a>
+                    </li>
+                    <li role="button"  class="nav-link"><a href="{{ url_for('Insert') }}">Insert </a>
+                    </li>
+                    <li role="button" class="nav-link"><a href="{{ url_for('Search') }}">Search </a>
+                    </li>
+          </ul>
+        </nav></center>
+
+        <h3 class="text-muted"><center><font color="red">Blood Bank Management System</h3> </center>
+        <h3 class="text-muted"><center><font color="red">Sign up to donate blood for Blood Drive!</h3> </center>
+      </div>
+ 
+      <div class="jumbotron">
+        
+        <form class="form-signin" align="left" method="post" action="/Insert_Drive_Donor">
+       <input type="text" name="ID" id="ID" class="form-control" placeholder="DriveID" required autofocus>
+       <br>
+       <input type="text" name="Fname" id="Fname" class="form-control" placeholder="Full Name" required autofocus>
+       <br>
+       <p align="left" >Select Gender   
+       <select name="gender">
+       <option name= "Male" value="Male">Male</option>
+        <option name="Female" value="Female">Female</option>
+        <option name="Other" value="Other">Other</option>
+      </p>
+        </select>
+        <br>
+       <!-- <input type="text" name="gender" id="gender" class="form-control" placeholder="Gender" required autofocus> -->
+       <br>
+       <input type="text" name="dob" id="dob" class="form-control" placeholder="Date of Birth" required autofocus>
+       <br>
+       <input type="text" name="BT" id="BT" class="form-control" placeholder="Blood Type" required autofocus>
+       <br>
+       <input type="text" name="DD" id="DD" class="form-control" placeholder="Donation Date" required autofocus>
+       <br>
+       
+
+         <button class="btn btn-lg btn-primary btn-info" type="submit">Submit</button>
+      </form>
+      </div>
+ 
+ 
+    </div>
+  </body>
+</html>

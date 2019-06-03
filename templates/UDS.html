@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>BBMS</title>
+ 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+    
+    <style> 
+        .nav-link{
+            text-align: center;
+            display: inline;            
+        }
+        
+        .nav-link a:hover{
+            opacity:0.6;
+            text-decoration: none;
+        }
+    
+    </style>
+    
+    
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <center>
+            <nav>
+                <ul>
+                    <li role="button" class="nav-link"><a href="{{ url_for('appp') }}">Home</a>
+                    </li>
+                    <li role="button" class="nav-link"><a href=" {{ url_for('delete') }} ">Delete</a>
+                    </li>
+                    <li role="button"  class="nav-link"><a href="{{ url_for('Insert') }}"> Insert </a>
+                    </li>
+                    <li role="button" class="nav-link"><a href="{{ url_for('Search') }}">Search </a>
+                    </li>
+                </ul>
+            </nav></center>
+            <h1><center><font color="red">Blood Bank Management System</font></center></h1>
+        </div>
+
+        <div class="jumbotron">
+        <h2> <center>Enter the ID corresponding to the row you want to {{flag}}. </center> </h2>
+
+        <form  method="post" action={{redirect}}>
+        
+       
+  <center><input type="text" name="ID" id="ID" class="form-control" placeholder="Enter ID e.g Bank ID if you clicked Bank" required autofocus></center>
+  
+
+  <br></br>
+         <center><button class="btn btn-lg btn-primary btn-info" type="submit">Submit</button></center>
+      </form>
+      </div>
+ 
+ 
+    </div>
+ 
+      
+ 
+    </div>
+</body>

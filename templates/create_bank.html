@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Create a Bank</title>
+ 
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+  <style> 
+        .nav-link{
+            text-align: center;
+            display: inline;            
+        }
+        
+        .nav-link a:hover{
+            opacity:0.6;
+            text-decoration: none;
+        }
+
+    </style>
+
+  </head>
+ 
+  <body>
+
+ 
+    <div class="container">
+      <div class="header">
+        <center>
+        <nav>
+          <ul>
+                    <li role="button" class="nav-link"><a href="{{ url_for('appp') }}">Home</a>
+                    </li>
+                    <li role="button" class="nav-link"><a href=" {{ url_for('delete') }} ">Delete</a>
+                    </li>
+                    <li role="button"  class="nav-link"><a href="{{ url_for('Insert') }}"> Insert </a>
+                    </li>
+                    <li role="button" class="nav-link"><a href="{{ url_for('Search') }}">Search </a>
+                    </li>
+          </ul>
+        </nav></center>
+
+        <h1><center><font color="red">Blood Bank Management System</font> </center></h1>
+      </div>
+ 
+      <div class="jumbotron">
+        
+        <form class="form-signin" method="post" action='/InsertBank'>
+          
+       <input type="text" name="inputbankaddress" id="inputbankaddress" class="form-control" placeholder="Bank Address" required autofocus>
+       <br>
+       <input type="text" name="inputCity" id="inputCity" class="form-control" placeholder="City" required autofocus>
+       <br>
+
+         <button class="btn btn-lg btn-primary btn-info" type="submit">Submit</button>
+      </form>
+      </div>
+ 
+ 
+    </div>
+  </body>
+</html>

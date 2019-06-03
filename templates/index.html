@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>BBMS</title>
+ 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+    
+    <style> 
+        .nav-link{
+            text-align: center;
+            display: inline;            
+        }
+        
+        .nav-link a:hover{
+            opacity:0.6;
+            text-decoration: none;
+        }
+    
+    </style>
+    
+    
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <center>
+            <nav>
+                <ul>
+                    <li role="button" class="active nav-link"><a href="#">Home</a>
+                    </li>
+                    <li role="button" class="nav-link"><a href=" {{ url_for('delete') }} ">Delete</a>
+                    </li>
+                    <li role="button"  class="nav-link"><a href="{{ url_for('Insert') }}"> Insert </a>
+                    </li>
+                   <!--  <li role="button" class="nav-link"><a href="{{ url_for('Search') }}">Search </a>
+                    <li role="button" class="nav-link"><a href="{{ url_for('Update') }}">Update </a></li>
+                    </li> -->
+                    <li role="button" class="nav-link"><a href="{{ url_for('Querie') }}">Queries </a></li>
+                    </li>
+                    <li role="button" class="nav-link"><a href="{{ url_for('SampleReq', option='Request') }}">Make a Request </a></li>
+                    </li>
+                    <li role="button" class="nav-link"><a href="{{ url_for('SampleReq', option='Sample') }}">Insert a Sample</a></li>
+                    </li>
+
+                </ul>
+            </nav></center>
+            <h1><center><font color="red">Blood Bank Management System</font></center></h1>
+        </div>
+ 
+      
+ 
+    </div>
+</body>
+ 
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Query 4</title>
+ 
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+  <style> 
+        .nav-link{
+            text-align: center;
+            display: inline;            
+        }
+        
+        .nav-link a:hover{
+            opacity:0.6;
+            text-decoration: none;
+        }
+
+    </style>
+
+  </head>
+ 
+  <body>
+
+ 
+    <div class="container">
+      <div class="header">
+        <center>
+        <nav>
+          <ul>
+                    <li role="button" class="nav-link"><a href="{{ url_for('appp') }}">Home</a>
+                    </li>
+                    <li role="button" class="nav-link"><a href=" {{ url_for('delete') }} ">Delete</a>
+                    </li>
+                    <li role="button"  class="nav-link"><a href="{{ url_for('Insert') }}">Insert </a>
+                    </li>
+                    
+          </ul>
+        </nav></center>
+
+        <h1><center><font color="red">Blood Bank Management System</h1> </center>
+            
+      </div>
+             
+      <p align="left"><font color="red">For a given blood group and gender, show names of all the donors.</p>
+ 
+      <div class="jumbotron">
+
+        <form class="form-signin" method="post" action="/Q4">
+
+       <p align="left" >Select Gender  &nbsp; &nbsp; 
+       <select name="Gender">
+       <option name= "inputName" value="Male">Male</option>
+        <option name="inputEmail" value="Female">Female</option>
+        <option name="inputEmail" value="Other">Other</option>
+        <br>
+      </p>
+      <br>
+        </select>
+        <br>
+        <br>
+
+        <input type="text" name="BT" id="BT" class="form-control" placeholder="Blood Type" required autofocus>
+       <br>
+     
+       </p>
+         <button class="btn btn-lg btn-primary btn-info" type="Submit">Submit</button>
+         
+
+      </form>
+      </div>
+ 
+ 
+    </div>
+  </body>
+</html>

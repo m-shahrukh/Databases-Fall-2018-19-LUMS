@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Query 3</title>
+ 
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+  <style> 
+        .nav-link{
+            text-align: center;
+            display: inline;            
+        }
+        
+        .nav-link a:hover{
+            opacity:0.6;
+            text-decoration: none;
+        }
+
+    </style>
+
+  </head>
+ 
+  <body>
+
+ 
+    <div class="container">
+      <div class="header">
+        <center>
+        <nav>
+          <ul>
+                    <li role="button" class="nav-link"><a href="{{ url_for('appp') }}">Home</a>
+                    </li>
+                    <li role="button" class="nav-link"><a href=" {{ url_for('delete') }} ">Delete</a>
+                    </li>
+                    <li role="button"  class="nav-link"><a href="{{ url_for('Insert') }}">Insert </a>
+                    </li>
+                   
+          </ul>
+        </nav></center>
+
+        <h1><center><font color="red">Blood Bank Management System</h1> </center>
+            
+      </div>
+             
+      <p><font color="red">In a given time period (starting date and ending date will be given as inouts), for which blood
+groups were more samples collected from the blood drive than those that were donated
+at the blood bank?
+</p>
+ 
+      <div class="jumbotron">
+
+        <form class="form-signin" method="post" action="/Q3">
+
+        <p align="left"><font color="red">The input format of the date is yyyy-mm-dd. </p>
+          <br>
+       <input type="text" name="startingdate" id="startingdate" class="form-control" placeholder="Starting Date" required autofocus><br>
+
+       <input type="text" name="endingdate" id="endingdate" class="form-control" placeholder="Ending Date" required autofocus>
+       <br>
+
+
+         <button class="btn btn-lg btn-primary btn-info" type="Submit">Submit</button>
+         </p>
+
+      </form>
+      </div>
+ 
+ 
+ 
+    </div>
+  </body>
+</html>

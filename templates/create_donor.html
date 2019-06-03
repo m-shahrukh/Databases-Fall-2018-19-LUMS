@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Blood Donor Sign up</title>
+ 
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+  <style> 
+        .nav-link{
+            text-align: center;
+            display: inline;            
+        }
+        
+        .nav-link a:hover{
+            opacity:0.6;
+            text-decoration: none;
+        }
+
+    </style>
+
+  </head>
+ 
+  <body>
+
+ 
+    <div class="container">
+      <div class="header">
+        <center>
+        <nav>
+          <ul>
+                    <li role="button" class="nav-link"><a href="{{ url_for('appp') }}">Home</a>
+                    </li>
+                    <li role="button" class="nav-link"><a href=" {{ url_for('delete') }} ">Delete</a>
+                    </li>
+                    <li role="button"  class="nav-link"><a href="{{ url_for('Insert') }}">Insert </a>
+                    </li>
+                    <li role="button" class="nav-link"><a href="{{ url_for('Search') }}">Search </a>
+                    <li role="button" class="nav-link"><a href="{{ url_for('Update') }}">Update </a></li>
+                    </li>
+          </ul>
+        </nav></center>
+
+        <h1><center><font color="red">Blood Bank Management System</h1> </center>
+           <h3><center><font color="red">Sign up as a Blood {{who}}!</h3> </center>
+          
+          
+      </div>
+ 
+      <div class="jumbotron">
+        
+        <form class="form-signin" method="post" action={{redirect}}>
+
+           <p align="left" >Enter the Bank IDs you are associated with. Please separate each ID with a space! </p>
+
+       <!-- <p align ="left">
+
+       <INPUT TYPE="Checkbox" Name="Name" value ="bank1">1 &nbsp; 
+       <INPUT TYPE="Checkbox" Name="Name" value ="bank2">2 &nbsp;
+       <INPUT TYPE="Checkbox" Name="Name" value ="bank3">3 <br>
+       <INPUT TYPE="Checkbox" Name="Name" value ="bank4">4 <br>
+  
+   </p> -->
+       <input type="text" name="banks" id="banks" class="form-control" placeholder="Enter banks" required autofocus><br>
+
+       <input type="text" name="inputfullname" id="inputfullname" class="form-control" placeholder="Full Name" required autofocus>
+       <br>
+  
+       <p align="left" >Select Gender  
+       <select name="Gender">
+       <option name= "inputName" value="Male">Male</option>
+        <option name="inputEmail" value="Female">Female</option>
+        <option name="inputEmail" value="Other">Other</option>
+        <br>
+      </p>
+      <br>
+        </select>
+        <br>
+        <br>
+       <input type="text" name="BT" id="BT" class="form-control" placeholder="Blood Type" required autofocus>
+       <br>
+       <input type="text" name="WT" id="WT" class="form-control" placeholder="Weight" required autofocus>
+       <br>
+       <input type="text" name="DOB" id="DOB" class="form-control" placeholder="Date of Birth" required autofocus>
+       <br>
+       <input type="text" name="E1" id="E1" class="form-control" placeholder="Email" required autofocus>
+       <br>
+        <input type="text" name="E2" id="E2" class="form-control" placeholder="Alternate Email (Optional)" autofocus>
+       <br>
+       <input type="text" name="A1" id="A1" class="form-control" placeholder="Address" required autofocus>
+       <br>
+       <input type="text" name="A2" id="A2" class="form-control" placeholder="Alternate Address (Optional)" autofocus>
+       <br>
+       <input type="text" name="C1" id="C1" class="form-control" placeholder="Contact number" required autofocus>
+       <br>
+       <input type="text" name="C2" id="C2" class="form-control" placeholder="Alternate Contact number (Optional)" autofocus>
+       <br>
+       
+       <p align="left" >Tick the boxes if you have or had the following diseases. </p>
+
+       <p align ="left">
+       <INPUT TYPE="Checkbox" Name="disease" value ="d1">Amyloidosis &nbsp; 
+       <INPUT TYPE="Checkbox" Name="disease" value ="d2">Anemia &nbsp;
+       <INPUT TYPE="Checkbox" Name="disease" value ="d3">Lymphoma <br>
+       <INPUT TYPE="Checkbox" Name="disease" value ="d4">Myelodysplastic Syndromes <br>
+       <INPUT TYPE="Checkbox" Name="disease" value ="d5">Myeloproliferative Disorders <br>
+       <INPUT TYPE="Checkbox" Name="disease" value ="d6">venous Thrombosis &nbsp;
+       <INPUT TYPE="Checkbox" Name="disease" value ="d7">Hemophilia &nbsp;
+       <INPUT TYPE="Checkbox" Name="disease" value ="d8">Leukemia <br>
+       <br>
+       
+
+         <button class="btn btn-lg btn-primary btn-info" type="Submit">Sign Up</button>
+         </p>
+
+      </form>
+      </div>
+ 
+ 
+    </div>
+  </body>
+</html>

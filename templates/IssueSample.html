@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Blood Drive Sign Up</title>
+ 
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+  <style> 
+        .nav-link{
+            text-align: center;
+            display: inline;            
+        }
+        
+        .nav-link a:hover{
+            opacity:0.6;
+            text-decoration: none;
+        }
+
+    </style>
+
+  </head>
+ 
+  <body>
+
+ 
+    <div class="container">
+      <div class="header">
+        <center>
+        <nav>
+          <ul>
+                    <li role="button" class="nav-link"><a href="{{ url_for('appp') }}">Home</a>
+                    </li>
+                    <li role="button" class="nav-link"><a href=" {{ url_for('delete') }} ">Delete</a>
+                    </li>
+                    <li role="button"  class="nav-link"><a href="{{ url_for('Insert') }}">Insert </a>
+                    </li>
+                    <!-- <li role="button" class="nav-link"><a href="{{ url_for('Search') }}">Search </a>
+                    </li> -->
+          </ul>
+        </nav></center>
+
+        <h3 class="text-muted"><center><font color="red">Blood Bank Management System</h3> </center>
+        <h3 class="text-muted"><center><font color="red">Sign up for Blood Drive!</h3> </center>
+      </div>
+ 
+      <div class="jumbotron">
+      
+        <form class="form-signin" align="left" method="post" action={{redirect}}>
+
+       
+       <input type="text" name="Date" id="Date" class="form-control" placeholder="{{who}} Date" required autofocus>
+       <br>
+       {% if who=="Request" %}
+
+       <input type="text" name="AcceptorID" id="AcceptorID" class="form-control" placeholder="Acceptor ID" required autofocus>
+       <br>
+
+       {%else%}
+       <input type="text" name="donorID" id="donorID" class="form-control" placeholder="Donor ID" required autofocus>
+       <br>
+       {% endif%}
+       
+
+         <button class="btn btn-lg btn-primary btn-info" type="submit">Submit</button>
+      </form>
+      </div>
+ 
+ 
+    </div>
+  </body>
+</html>

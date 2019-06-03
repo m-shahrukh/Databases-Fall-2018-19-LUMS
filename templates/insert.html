@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BBMS</title>
+ 
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- 
+      <link href="../static/insert.css" rel="stylesheet"> -->
+    
+   <!--  <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/signUp.js"></script>
+
+    -->
+     
+    <style> 
+        .nav-link{
+            text-align: center;
+            display: inline;            
+        }
+        
+        .nav-link a:hover{
+            opacity:0.6;
+            text-decoration: none;
+        }
+
+        
+    
+    </style>
+     
+  </head>
+ 
+  <body>
+ 
+    <div class="container">
+      <div class="header">
+        <nav> <center>
+          <ul>
+            <li  role="button" class="nav-link" ><a href="{{ url_for('appp') }}">Home</a></li>
+            <li  role="button" class="nav-link"><a href="#">Delete</a></li>
+            <li  role="button" class="active nav-link"><a href="#">Insert</a></li>
+            <!--  <li role="button" class="nav-link"><a href="{{ url_for('Search') }}">Search </a></li>
+             <li role="button" class="nav-link"><a href="{{ url_for('Update') }}">Update </a></li>
+          --> </ul>
+        </nav></center>
+        <h1><font color="red"><center>Blood Bank Management System</center></font></h1>
+      </div>
+ 
+      <div class="jumbotron">
+        
+        <h2> <center>Select the table you want to {{flag}} in </center> </h2>
+
+        <form  method="post" action={{redirect}}>
+        
+ <input list="options" name="options" autocomplete="off">
+  <datalist id="options"> 
+    <option value="Blood Bank"></option>
+    <option value="Blood Donor"></option>
+    <option value="Blood Acceptor"></option>
+    <option value="Blood Drive"></option>
+    <option value="Blood Drive Donor"></option>
+  </datalist>
+  
+
+
+
+
+  <br></br>
+         <button class="btn btn-lg btn-primary btn-info" type="submit">Submit</button>
+      </form>
+      </div>
+ 
+ 
+    </div>
+  </body>
+</html>

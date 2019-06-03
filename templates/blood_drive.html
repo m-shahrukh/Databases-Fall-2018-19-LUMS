@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Blood Drive Sign Up</title>
+ 
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+  <style> 
+        .nav-link{
+            text-align: center;
+            display: inline;            
+        }
+        
+        .nav-link a:hover{
+            opacity:0.6;
+            text-decoration: none;
+        }
+
+    </style>
+
+  </head>
+ 
+  <body>
+
+ 
+    <div class="container">
+      <div class="header">
+        <center>
+        <nav>
+          <ul>
+                    <li role="button" class="nav-link"><a href="{{ url_for('appp') }}">Home</a>
+                    </li>
+                    <li role="button" class="nav-link"><a href=" {{ url_for('delete') }} ">Delete</a>
+                    </li>
+                    <li role="button"  class="nav-link"><a href="{{ url_for('Insert') }}">Insert </a>
+                    </li>
+                    <li role="button" class="nav-link"><a href="{{ url_for('Search') }}">Search </a>
+                    </li>
+          </ul>
+        </nav></center>
+
+        <h3 class="text-muted"><center><font color="red">Blood Bank Management System</h3> </center>
+        <h3 class="text-muted"><center><font color="red">Sign up for Blood Drive!</h3> </center>
+      </div>
+ 
+      <div class="jumbotron">
+        
+        <form class="form-signin" align="left" method="post" action='/InsertDrive'>
+
+       <input type="text" name="bankID" id="bankID" class="form-control" placeholder="Bank ID" required autofocus>
+       <br>
+       <input type="text" name="Location" id="Location" class="form-control" placeholder="Location" required autofocus>
+       <br>
+       <input type="text" name="SD" id="SD" class="form-control" placeholder="Start Date" required autofocus>
+       <br>
+       <input type="text" name="ED" id="ED" class="form-control" placeholder="End Date" required autofocus>
+       <br>
+       
+
+         <button class="btn btn-lg btn-primary btn-info" type="submit">Submit</button>
+      </form>
+      </div>
+ 
+ 
+    </div>
+  </body>
+</html>
