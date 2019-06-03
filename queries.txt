@@ -1,0 +1,262 @@
+Query 1
+
+SET @count_acc= 0;
+
+SET @count_donor= 0;
+select count(disease_id) INTO @count_acc
+from acceptor_diseases 
+group by (disease_id) having disease_id=2;
+
+select count(disease_id) INTO @count_donor
+from donor_diseases
+group by (disease_id) having disease_id=2;
+
+SELECT IF 
+(@count_acc>@count_donor, "More acceptors", "More donors");
+
+//disease_id will be given as input and it the output is if that particular disease is more recurrent in donors or acceptors
+
+Query 2
+
+SET @blood_type = "c1";
+
+select blood_type into @blood_type from(
+select max(number_blood_type),blood_type from
+(select count(blood_type) as Number_blood_type,blood_type from blood_acceptor a inner join blood_issued b
+on a.acceptor_id=b.acceptor_id
+inner join issued_dates x on 
+x.issue_id=b.issue_id
+where x.dateofissue between "2018-02-05" and "2018-02-16"
+group by blood_type
+order by count(blood_type) desc)
+ as c) 
+ as d;
+
+select @blood_type;
+
+select count(y.donor_id) as the_number_of_times_donated, y.donor_id, y.full_name from blood_donor y 
+inner join blood_issued b
+on y.donor_id=b.donor_id
+inner join issued_dates x on 
+x.issue_id=b.issue_id
+where (x.dateofissue between "2018-02-05" and "2018-02-16")
+and y.blood_type=@blood_type
+group by y.donor_id;
+
+
+//the dateofissue range will be given as inputs. as in between these dates jo blood group sab se zada issue hua un k donors batao
+
+Query 3
+
+CREATE TEMPORARY TABLE query3_1 (
+blood_total int, blood_group varchar(2)
+) ;
+
+insert into query3_1
+(blood_total,blood_group)
+
+select count(d.blood_type), d.blood_type from blood_bank a inner join blood_drive b
+on a.bank_id=b.bank_id
+inner join blood_drive_donor d
+ on d.drive_id=b.drive_id
+ where d.donation_date between "2015-05-08" and "2015-05-11"
+group by d.blood_type;
+
+CREATE TEMPORARY TABLE query3_2 (
+blood_total int, blood_group varchar(2)
+) ;
+
+insert into query3_2
+(blood_total,blood_group)
+
+select count(f.blood_type) , f.blood_type from blood_donor f
+inner join blood_sample g on g.donor_id= f.donor_id
+inner join sample_dates h on h.sample_id = g.sample_id
+where h.date_of_sample between "2015-05-08" and "2015-05-11"
+group by f.blood_type;
+
+select * from query3_1;
+select * from query3_2;
+
+select a.blood_group from query3_1 a, query3_2 b
+where a.blood_group=b.blood_group
+and a.blood_total>b.blood_total;
+
+drop table query3_1;
+drop table query3_2;
+
+//the starting and ending date will be given as inputs.
+
+Query 4
+
+select full_name from blood_donor
+where blood_type="O+"
+and gender="M";
+
+//the gender and blood_type will be given as inputs
+
+Query 5
+select min(number_of_Blood_types), blood_type
+from(
+select count(BLOOD_TYPE) as number_of_Blood_types,blood_type from blood_donor a inner join donor_bank b
+on a.donor_id=b.donor_id
+where bank_Id=1
+group by blood_type
+order by number_of_Blood_types asc) as myalias
+;
+
+select max(number_of_Blood_types), blood_type
+from(
+select count(BLOOD_TYPE) as number_of_Blood_types,blood_type from blood_donor a inner join donor_bank b
+on a.donor_id=b.donor_id
+where bank_Id=1
+group by blood_type
+order by number_of_Blood_types desc) as myalias
+;
+
+//bank_id will be given as input. we have to tell which blood group is most common and least common in that particular bank
+
+Query 6
+
+select b.acceptor_id, b.Full_Name
+ from Blood_issued a inner join blood_acceptor b
+on a.acceptor_id=b.acceptor_id
+inner join blood_donor d on d.donor_id=a.donor_id
+group by d.donor_id, b.acceptor_id
+having count(d.donor_id)>1;
+
+//no input. List all acceptors who received at least two blood samples from the same donor.
+//count(d.donor_id) as No_blood_taken_by_same_donor
+Query 7
+
+CREATE TEMPORARY TABLE query7_1 (
+acceptor_got_1_sample int
+) ;
+
+insert into query7_1
+(acceptor_got_1_sample)
+select acceptor_id from blood_issued
+group by acceptor_id
+having count(acceptor_id)=1;
+
+select * from query7_1;
+
+CREATE TEMPORARY TABLE query7_2 
+(acceptor__id_count_requests int 
+, acceptor_iid int) ;
+
+insert into query7_2
+(acceptor__id_count_requests, acceptor_iid)
+select count(acceptor_id), acceptor_id from pending_requests
+group by acceptor_id;
+
+select acceptor__id_count_requests, acceptor_iid from query7_2 a inner join acceptor_diseases b
+on a.acceptor_iid=b.acceptor_id 
+inner join query7_1 c on c.acceptor_got_1_sample=a.acceptor_iid
+group by acceptor_iid
+order by c.acceptor_got_1_sample asc;
+
+drop table query7_2;
+drop table query7_1;
+
+// no input. From amongst the acceptors who have at least one disease and received at most one
+sample of blood, list all acceptors who have made the most number of requests.
+
+
+Query 8
+//sum the counts according to blood_type and show the maximum sum(count) corresponding the blood_type
+
+CREATE TEMPORARY TABLE query8_1 (
+disease_total int, blood_group varchar(2)
+) ;
+
+insert into query8_1
+(disease_total,blood_group)
+select sum(olala) as no_of_diseases, blood_type from (
+select a.acceptor_id,a.full_name,a.blood_type, count(b.disease_id) as olala from blood_acceptor a 
+inner join acceptor_diseases b on a.acceptor_id=b.acceptor_id
+group by b.acceptor_id) as x
+group by blood_type;
+
+
+insert into query8_1
+(disease_total,blood_group)
+select sum(olala) as no_of_diseases, blood_type from
+(select a.donor_id,a.full_name,a.blood_type, count(b.disease_id) as olala from blood_donor a 
+inner join donor_diseases b on a.donor_id=b.donor_id
+group by b.donor_id) as x
+group by blood_type;
+
+select * from query8_1;
+
+select blood_group from(
+select max(sum_diseases) as ordering , blood_group from(
+select sum(disease_total) as sum_diseases,blood_group from query8_1
+group by blood_group
+ order by sum_diseases desc) as a)
+as b;
+
+drop table query8_1;
+
+
+query 9
+
+CREATE TEMPORARY TABLE query9_1 (
+number_of_samples int, blood_group varchar(2)
+) ;
+
+insert into query9_1
+(number_of_samples,blood_group)
+select count(d.blood_type), d.blood_type from blood_bank a inner join blood_drive b
+on a.bank_id=b.bank_id
+inner join blood_drive_donor d
+ on d.drive_id=b.drive_id
+where b.drive_id=1
+group by d.blood_type;
+
+CREATE TEMPORARY TABLE query9_2 (
+number_of_samples int, blood_group varchar(2)
+) ;
+
+insert into query9_2
+(number_of_samples,blood_group)
+select count(d.blood_type), d.blood_type from blood_bank a inner join blood_drive b
+on a.bank_id=b.bank_id
+inner join blood_drive_donor d
+ on d.drive_id=b.drive_id
+where b.drive_id=2
+group by d.blood_type;
+
+select * from query9_2;
+
+select a.blood_group
+from query9_1 a,query9_2 b
+where a.blood_group=b.blood_group
+and a.number_of_samples> 0.9 * b.number_of_samples
+and a.number_of_samples!= b.number_of_samples;
+
+
+drop table query9_2;
+drop table query9_1;
+
+
+
+Query 10
+
+set @avg_donor_age=0;
+
+SELECT 
+ avg(DATEDIFF(sysdate(), dateofbirth))/365 INTO @avg_donor_age 
+ from blood_donor;
+
+ select @avg_donor_age;
+ 
+ set @avg_drive_donor_age=0;
+ 
+  SELECT 
+ avg(DATEDIFF(sysdate(), dateofbirth))/365 into @avg_drive_donor_age from blood_drive_donor;
+ 
+ select @avg_drive_donor_age;
+
+ select @avg_donor_age-@avg_drive_donor_age;
+
